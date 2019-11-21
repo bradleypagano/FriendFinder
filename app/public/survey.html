@@ -151,7 +151,8 @@
                     <h3 class="modal-title">We Found You a Super Friend!</h3>
                 </div>
                 <div class="modal-body">
-                    <P id="emptyP"></P>
+                    <div id="emptyDiv">
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,7 +181,14 @@ $("#find").on("click", function(event){
             parseInt($("#menu9 option:selected").val()),
             parseInt($("#menu10 option:selected").val())
         ] 
-    }
+    };
+
+    console.log(newFriend);
+
+    $.post("/api/friends", newFriend, function(data){
+        $("#myName").val("");
+        $("#myPic").val("");
+    });
 
 })
 
