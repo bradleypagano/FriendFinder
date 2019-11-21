@@ -18,11 +18,11 @@
         <form>
             <div class="form-group">
                 <label>Your Name</label>
-                <input type="text" class="form-control" placeholder="Your Name Here" />
+                <input id="myName" type="text" class="form-control" placeholder="Your Name Here" />
             </div>
             <div class="form-group">
                 <label>Upload a Picture!</label>
-                <input type="file" class="form-control-file">
+                <input id="myPic" type="file" class="form-control-file">
                 <small class="form-text text-muted">Pick a good one!</small>
             </div>
             <div class="text-center">
@@ -30,7 +30,7 @@
             </div>
             <div class="form-row">
                 <label>Do you need alcohol to have a good time?</label>
-                <select class="custom-select">
+                <select id="menu1" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -41,7 +41,7 @@
             </div>
             <div class="form-row">
                 <label>Do you watch a lot of television?</label>
-                <select class="custom-select">
+                <select id="menu2" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -52,7 +52,7 @@
             </div>
             <div class="form-row">
                 <label>How many cars do you own?</label>
-                <select class="custom-select">
+                <select id="menu3" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -63,7 +63,7 @@
             </div>
             <div class="form-row">
                 <label>How many board games do you play in a week?</label>
-                <select class="custom-select">
+                <select id="menu4" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -74,7 +74,7 @@
             </div>
             <div class="form-row">
                 <label>How important are your friends to you?</label>
-                <select class="custom-select">
+                <select id="menu5" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -85,7 +85,7 @@
             </div>
             <div class="form-row">
                 <label>Do you care about religion? 1 not at all, 5 absolutely</label>
-                <select class="custom-select">
+                <select id="menu6" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -96,7 +96,7 @@
             </div>
             <div class="form-row">
                 <label>Dogs are way better than cats</label>
-                <select class="custom-select">
+                <select id="menu7" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -107,7 +107,7 @@
             </div>
             <div class="form-row">
                 <label>Do you watch all the sports?</label>
-                <select class="custom-select">
+                <select id="menu8" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -118,7 +118,7 @@
             </div>
             <div class="form-row">
                 <label>Are you a Lewis Hamilton fan?</label>
-                <select class="custom-select">
+                <select id="menu9" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -129,7 +129,7 @@
             </div>
             <div class="form-row">
                 <label>Do you agree that Fernando Alonso was poison to McClaren?</label>
-                <select class="custom-select">
+                <select id="menu10" class="custom-select">
                     <option selected>Select One...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -139,10 +139,49 @@
                 </select>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-primary">Find Friends</button>
+                <button id="find" type="submit" data-toggle="modal" data-target="#theModal" class="btn btn-primary">Find Friends</button>
             </div>
         </form>
+    </div>
+    <div id="theModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">We Found You a Super Friend!</h3>
+                </div>
+                <div class="modal-body">
+                    <P id="emptyP"></P>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
 </html>
+
+<script type="text/javascript">
+
+$("#find").on("click", function(event){
+    event.preventDefault();
+
+    const newFriend = {
+        name: $("#myName").val().trim(),
+        photo:$("#myPic"),
+        scores:[
+            parseInt($("#menu1 option:selected").val()),
+            parseInt($("#menu2 option:selected").val()),
+            parseInt($("#menu3 option:selected").val()),
+            parseInt($("#menu4 option:selected").val()),
+            parseInt($("#menu5 option:selected").val()),
+            parseInt($("#menu6 option:selected").val()),
+            parseInt($("#menu7 option:selected").val()),
+            parseInt($("#menu8 option:selected").val()),
+            parseInt($("#menu9 option:selected").val()),
+            parseInt($("#menu10 option:selected").val())
+        ] 
+    }
+
+})
+
+</script>
